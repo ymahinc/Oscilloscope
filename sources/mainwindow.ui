@@ -1,0 +1,1330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>750</width>
+    <height>784</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Oscilloscope</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="oscillo.qrc">
+    <normaloff>:/pictures/sine.png</normaloff>:/pictures/sine.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>750</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Settings</string>
+    </property>
+    <addaction name="actionConfigure"/>
+   </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Tools</string>
+    </property>
+    <addaction name="actionZoom"/>
+    <addaction name="actionRuler"/>
+    <addaction name="separator"/>
+    <addaction name="actionZoom_reset"/>
+    <addaction name="actionZoom_In"/>
+    <addaction name="actionZoom_out"/>
+    <addaction name="separator"/>
+    <addaction name="actionSave_current_graph"/>
+    <addaction name="actionSave_current_trace"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+    <addaction name="actionFullScreen"/>
+   </widget>
+   <widget class="QMenu" name="menuMode">
+    <property name="title">
+     <string>Mode</string>
+    </property>
+    <addaction name="actionNormal"/>
+    <addaction name="actionSingleShot"/>
+   </widget>
+   <addaction name="menuTools"/>
+   <addaction name="menuMode"/>
+   <addaction name="menuSettings"/>
+   <addaction name="menuView"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionConfigure"/>
+   <addaction name="separator"/>
+   <addaction name="actionZoom"/>
+   <addaction name="actionRuler"/>
+   <addaction name="separator"/>
+   <addaction name="actionSave_current_graph"/>
+   <addaction name="separator"/>
+   <addaction name="actionFullScreen"/>
+   <addaction name="separator"/>
+   <addaction name="actionStart"/>
+   <addaction name="actionStop"/>
+   <addaction name="separator"/>
+   <addaction name="triggeredAction"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="MYDock" name="dockWidget">
+   <property name="minimumSize">
+    <size>
+     <width>182</width>
+     <height>93</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>182</width>
+     <height>524287</height>
+    </size>
+   </property>
+   <property name="features">
+    <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <layout class="QVBoxLayout" name="verticalLayout_17">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QScrollArea" name="scrollArea">
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="scrollAreaWidgetContents">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>180</width>
+          <height>685</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_16">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>2</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>2</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_19">
+           <item>
+            <widget class="QGroupBox" name="canal1GroupBox">
+             <property name="title">
+              <string>Channel 1</string>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_6">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_5">
+                <item>
+                 <widget class="QComboBox" name="chan1ComboBox">
+                  <item>
+                   <property name="text">
+                    <string>DC</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>AC</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>GND</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QGridLayout" name="gridLayout_2">
+                  <item row="0" column="0">
+                   <widget class="YResDial" name="YRes1Dial" native="true">
+                    <property name="minimumSize">
+                     <size>
+                      <width>140</width>
+                      <height>110</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>140</width>
+                      <height>110</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <layout class="QVBoxLayout" name="verticalLayout_4">
+                    <item>
+                     <widget class="MYSlider" name="Y1Slider">
+                      <property name="styleSheet">
+                       <string notr="true">QSlider::groove:vertical {
+    border: 1px solid #999999;
+    width: 8px; /* the groove expands to the size of the slider by default. by giving it a height, it has a fixed size */
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #B1B1B1, stop:1 #c4c4c4);
+    margin: 2px 0;
+}
+
+QSlider::handle:vertical {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);
+    border: 1px solid #5c5c5c;
+    height: 18px;
+    margin: -2px 0; /* handle is placed by default on the contents rect of the groove. Expand outside the groove */
+    border-radius: 3px;
+}</string>
+                      </property>
+                      <property name="minimum">
+                       <number>-255</number>
+                      </property>
+                      <property name="maximum">
+                       <number>255</number>
+                      </property>
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label">
+                      <property name="text">
+                       <string>Dy</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item row="1" column="0">
+                   <layout class="QHBoxLayout" name="horizontalLayout">
+                    <item>
+                     <widget class="QLabel" name="DX1Label">
+                      <property name="text">
+                       <string>Dx:</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="MYSlider" name="X1Slider">
+                      <property name="styleSheet">
+                       <string notr="true">QSlider::groove:horizontal {
+    border: 1px solid #999999;
+    height: 8px; /* the groove expands to the size of the slider by default. by giving it a height, it has a fixed size */
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #B1B1B1, stop:1 #c4c4c4);
+    margin: 2px 0;
+}
+
+QSlider::handle:horizontal {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);
+    border: 1px solid #5c5c5c;
+    width: 18px;
+    margin: -2px 0; /* handle is placed by default on the contents rect of the groove. Expand outside the groove */
+    border-radius: 3px;
+}</string>
+                      </property>
+                      <property name="minimum">
+                       <number>-361</number>
+                      </property>
+                      <property name="maximum">
+                       <number>362</number>
+                      </property>
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="tickPosition">
+                       <enum>QSlider::NoTicks</enum>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="invertCanal1CheckBox">
+                  <property name="text">
+                   <string>Invert</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_4">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="canal2GroupBox">
+             <property name="title">
+              <string>Channel 2</string>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_18">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_11">
+                <item>
+                 <widget class="QComboBox" name="chan2ComboBox">
+                  <item>
+                   <property name="text">
+                    <string>DC</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>AC</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>GND</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QGridLayout" name="gridLayout">
+                  <item row="0" column="0">
+                   <widget class="YResDial" name="YRes2Dial" native="true">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>140</width>
+                      <height>110</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>140</width>
+                      <height>110</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <layout class="QVBoxLayout" name="verticalLayout_8">
+                    <item>
+                     <widget class="MYSlider" name="Y2Slider">
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QSlider::groove:vertical {
+    border: 1px solid #999999;
+    width: 8px; /* the groove expands to the size of the slider by default. by giving it a height, it has a fixed size */
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #B1B1B1, stop:1 #c4c4c4);
+    margin: 2px 0;
+}
+
+QSlider::handle:vertical {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);
+    border: 1px solid #5c5c5c;
+    height: 18px;
+    margin: -2px 0; /* handle is placed by default on the contents rect of the groove. Expand outside the groove */
+    border-radius: 3px;
+}</string>
+                      </property>
+                      <property name="minimum">
+                       <number>-255</number>
+                      </property>
+                      <property name="maximum">
+                       <number>255</number>
+                      </property>
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_2">
+                      <property name="text">
+                       <string>Dy</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item row="1" column="0">
+                   <layout class="QHBoxLayout" name="horizontalLayout_2">
+                    <item>
+                     <widget class="QLabel" name="DX2Label">
+                      <property name="text">
+                       <string>Dx:</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="MYSlider" name="X2Slider">
+                      <property name="styleSheet">
+                       <string notr="true">QSlider::groove:horizontal {
+    border: 1px solid #999999;
+    height: 8px; /* the groove expands to the size of the slider by default. by giving it a height, it has a fixed size */
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #B1B1B1, stop:1 #c4c4c4);
+    margin: 2px 0;
+}
+
+QSlider::handle:horizontal {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);
+    border: 1px solid #5c5c5c;
+    width: 18px;
+    margin: -2px 0; /* handle is placed by default on the contents rect of the groove. Expand outside the groove */
+    border-radius: 3px;
+}</string>
+                      </property>
+                      <property name="minimum">
+                       <number>-361</number>
+                      </property>
+                      <property name="maximum">
+                       <number>362</number>
+                      </property>
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="tickPosition">
+                       <enum>QSlider::NoTicks</enum>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="invertCanal2CheckBox">
+                  <property name="text">
+                   <string>Invert</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_5">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="timeGroupBox">
+             <property name="title">
+              <string>Time/Div</string>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_10">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>2</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>2</number>
+              </property>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_9">
+                <item>
+                 <widget class="XResDial" name="xResDial" native="true"/>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="MYDock" name="dockWidget_3">
+   <property name="features">
+    <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_3">
+    <layout class="QVBoxLayout" name="verticalLayout_15">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="leftMargin">
+      <number>2</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>2</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_14">
+       <item>
+        <widget class="QGroupBox" name="triggerGroupBox">
+         <property name="title">
+          <string>Trigger</string>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <widget class="QComboBox" name="triggerCombo">
+              <item>
+               <property name="text">
+                <string>Canal 1</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Canal 2</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Extern</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Auto</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <item>
+               <spacer name="horizontalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="MYDial" name="triggerDial">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>50</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="maximum">
+                 <number>255</number>
+                </property>
+                <property name="value">
+                 <number>127</number>
+                </property>
+                <property name="invertedAppearance">
+                 <bool>false</bool>
+                </property>
+                <property name="invertedControls">
+                 <bool>false</bool>
+                </property>
+                <property name="notchTarget">
+                 <double>10.000000000000000</double>
+                </property>
+                <property name="notchesVisible">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="spinBox">
+                <property name="maximum">
+                 <number>255</number>
+                </property>
+                <property name="value">
+                 <number>127</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="invertTrigCheckBox">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="text">
+               <string>Falling edge</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="mathsGroupBox">
+         <property name="title">
+          <string>Functions</string>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <item>
+             <widget class="QComboBox" name="mathsComboBox">
+              <item>
+               <property name="text">
+                <string>Add</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Substract</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>XY</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>FFT Voie 1</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>FFT Voie 2</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::MinimumExpanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Saved traces</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="tableWidget"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Infos</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="infosTableWidget">
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+         <property name="selectionMode">
+          <enum>QAbstractItemView::NoSelection</enum>
+         </property>
+         <property name="cornerButtonEnabled">
+          <bool>false</bool>
+         </property>
+         <attribute name="horizontalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="horizontalHeaderStretchLastSection">
+          <bool>true</bool>
+         </attribute>
+         <attribute name="verticalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="verticalHeaderDefaultSectionSize">
+          <number>21</number>
+         </attribute>
+         <attribute name="verticalHeaderMinimumSectionSize">
+          <number>18</number>
+         </attribute>
+         <row>
+          <property name="text">
+           <string>Channel 1</string>
+          </property>
+          <property name="background">
+           <color>
+            <red>85</red>
+            <green>255</green>
+            <blue>0</blue>
+           </color>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>V</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>VMax</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>VMin</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Frequ.</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Channel 2</string>
+          </property>
+          <property name="background">
+           <color>
+            <red>85</red>
+            <green>85</green>
+            <blue>127</blue>
+           </color>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>V</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>VMax</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Vmin</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Frequ.</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Cursors</string>
+          </property>
+          <property name="background">
+           <color>
+            <red>77</red>
+            <green>77</green>
+            <blue>77</blue>
+           </color>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Periode 1</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Frequ.1</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Period 2</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Frequ. 2</string>
+          </property>
+         </row>
+         <column>
+          <property name="text">
+           <string>Title</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Value</string>
+          </property>
+         </column>
+         <item row="0" column="0">
+          <property name="text">
+           <string> Channel 1</string>
+          </property>
+          <property name="background">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>85</red>
+             <green>255</green>
+             <blue>127</blue>
+            </color>
+           </brush>
+          </property>
+         </item>
+         <item row="0" column="1">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="background">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>85</red>
+             <green>255</green>
+             <blue>127</blue>
+            </color>
+           </brush>
+          </property>
+         </item>
+         <item row="1" column="0">
+          <property name="text">
+           <string>V</string>
+          </property>
+         </item>
+         <item row="2" column="0">
+          <property name="text">
+           <string>VMax</string>
+          </property>
+         </item>
+         <item row="3" column="0">
+          <property name="text">
+           <string>VMin</string>
+          </property>
+         </item>
+         <item row="4" column="0">
+          <property name="text">
+           <string>Frequ.</string>
+          </property>
+         </item>
+         <item row="5" column="0">
+          <property name="text">
+           <string>Channel 2</string>
+          </property>
+          <property name="background">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>0</red>
+             <green>170</green>
+             <blue>255</blue>
+            </color>
+           </brush>
+          </property>
+         </item>
+         <item row="5" column="1">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="background">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>0</red>
+             <green>170</green>
+             <blue>255</blue>
+            </color>
+           </brush>
+          </property>
+         </item>
+         <item row="6" column="0">
+          <property name="text">
+           <string>V</string>
+          </property>
+         </item>
+         <item row="7" column="0">
+          <property name="text">
+           <string>VMax</string>
+          </property>
+         </item>
+         <item row="8" column="0">
+          <property name="text">
+           <string>VMin</string>
+          </property>
+         </item>
+         <item row="9" column="0">
+          <property name="text">
+           <string>Frequ.</string>
+          </property>
+         </item>
+         <item row="10" column="0">
+          <property name="text">
+           <string>Cursors</string>
+          </property>
+          <property name="background">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>100</red>
+             <green>100</green>
+             <blue>100</blue>
+            </color>
+           </brush>
+          </property>
+         </item>
+         <item row="10" column="1">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="background">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>100</red>
+             <green>100</green>
+             <blue>100</blue>
+            </color>
+           </brush>
+          </property>
+         </item>
+         <item row="11" column="0">
+          <property name="text">
+           <string>Period 1</string>
+          </property>
+         </item>
+         <item row="12" column="0">
+          <property name="text">
+           <string>Frequ. 1</string>
+          </property>
+         </item>
+         <item row="13" column="0">
+          <property name="text">
+           <string>Period 2</string>
+          </property>
+         </item>
+         <item row="14" column="0">
+          <property name="text">
+           <string>Frequ. 2</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <action name="actionConfigure">
+   <property name="icon">
+    <iconset resource="oscillo.qrc">
+     <normaloff>:/pictures/gear.png</normaloff>:/pictures/gear.png</iconset>
+   </property>
+   <property name="text">
+    <string>Configure</string>
+   </property>
+  </action>
+  <action name="actionZoom">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="oscillo.qrc">
+     <normaloff>:/pictures/selection_view.png</normaloff>:/pictures/selection_view.png</iconset>
+   </property>
+   <property name="text">
+    <string>Zoom</string>
+   </property>
+   <property name="shortcut">
+    <string>Z</string>
+   </property>
+  </action>
+  <action name="actionRuler">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="oscillo.qrc">
+     <normaloff>:/pictures/regle.png</normaloff>:/pictures/regle.png</iconset>
+   </property>
+   <property name="text">
+    <string>Ruler</string>
+   </property>
+   <property name="shortcut">
+    <string>R</string>
+   </property>
+  </action>
+  <action name="actionZoom_reset">
+   <property name="text">
+    <string>Zoom reset</string>
+   </property>
+   <property name="shortcut">
+    <string>0</string>
+   </property>
+  </action>
+  <action name="actionZoom_In">
+   <property name="text">
+    <string>Zoom In</string>
+   </property>
+   <property name="shortcut">
+    <string>+</string>
+   </property>
+  </action>
+  <action name="actionZoom_out">
+   <property name="text">
+    <string>Zoom out</string>
+   </property>
+   <property name="shortcut">
+    <string>-</string>
+   </property>
+  </action>
+  <action name="actionSave_current_graph">
+   <property name="icon">
+    <iconset resource="oscillo.qrc">
+     <normaloff>:/pictures/camera2.png</normaloff>:/pictures/camera2.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save current graph as png</string>
+   </property>
+  </action>
+  <action name="actionFullScreen">
+   <property name="icon">
+    <iconset resource="oscillo.qrc">
+     <normaloff>:/pictures/fit_to_size.png</normaloff>:/pictures/fit_to_size.png</iconset>
+   </property>
+   <property name="text">
+    <string>Full Screen</string>
+   </property>
+  </action>
+  <action name="actionNormal">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Normal</string>
+   </property>
+  </action>
+  <action name="actionStart">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="oscillo.qrc">
+     <normaloff>:/pictures/media_play_green.png</normaloff>:/pictures/media_play_green.png</iconset>
+   </property>
+   <property name="text">
+    <string>Start</string>
+   </property>
+  </action>
+  <action name="actionStop">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="oscillo.qrc">
+     <normaloff>:/pictures/media_stop_red.png</normaloff>:/pictures/media_stop_red.png</iconset>
+   </property>
+   <property name="text">
+    <string>Stop</string>
+   </property>
+  </action>
+  <action name="actionSingleShot">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Single shot</string>
+   </property>
+  </action>
+  <action name="triggeredAction">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="oscillo.qrc">
+     <normaloff>:/pictures/nav_plain_green.png</normaloff>:/pictures/nav_plain_green.png</iconset>
+   </property>
+   <property name="text">
+    <string>trigger</string>
+   </property>
+   <property name="toolTip">
+    <string>trigger</string>
+   </property>
+  </action>
+  <action name="actionSave_current_trace">
+   <property name="icon">
+    <iconset resource="oscillo.qrc">
+     <normaloff>:/pictures/disk_blue.png</normaloff>:/pictures/disk_blue.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save current trace</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>YResDial</class>
+   <extends>QWidget</extends>
+   <header location="global">yresdial.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>XResDial</class>
+   <extends>QWidget</extends>
+   <header>xresdial.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MYDock</class>
+   <extends>QDockWidget</extends>
+   <header>mydock.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MYSlider</class>
+   <extends>QSlider</extends>
+   <header>myslider.h</header>
+  </customwidget>
+  <customwidget>
+   <class>MYDial</class>
+   <extends>QDial</extends>
+   <header>mydial.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="oscillo.qrc"/>
+ </resources>
+ <connections/>
+</ui>

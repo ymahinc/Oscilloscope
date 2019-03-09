@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>pictures/gear.png</file>
+        <file>pictures/refresh.png</file>
+        <file>pictures/sine.png</file>
+        <file>pictures/regle.png</file>
+        <file>pictures/selection_view.png</file>
+        <file>pictures/camera2.png</file>
+        <file>pictures/fit_to_size.png</file>
+        <file>pictures/reglecur.png</file>
+        <file>pictures/media_play_green.png</file>
+        <file>pictures/media_stop_red.png</file>
+        <file>pictures/nav_plain_green.png</file>
+        <file>pictures/disk_blue.png</file>
+    </qresource>
+</RCC>
